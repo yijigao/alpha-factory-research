@@ -2,7 +2,7 @@
 export interface Props { title: string; description?: string; }
 const { title, description } = Astro.props;
 const fullTitle = `${title} — Alpha Factory Research`;
-const metaDesc = description || 'Independent quantitative research for systematic traders.';
+const metaDesc = description || 'Independent quantitative research for systematic traders. We validate trading ideas before they risk capital.';
 ---
 <!doctype html>
 <html lang="en">
@@ -15,12 +15,25 @@ const metaDesc = description || 'Independent quantitative research for systemati
   <meta property="og:description" content={metaDesc} />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Alpha Factory Research" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://alpha-factory-research.pages.dev/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={metaDesc} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
   <style is:global>
     @import '/src/styles/global.css';
   </style>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "PLACEHOLDER_CF_TOKEN"}'></script>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PLACEHOLDER');
+  </script>
 </head>
 <body>
   <header style="max-width:720px;margin:0 auto;padding:1.5rem 1.5rem 0;display:flex;justify-content:space-between;align-items:center;">
